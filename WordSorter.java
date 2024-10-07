@@ -1,5 +1,8 @@
 import java.io.File;
 import java.util.Scanner;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
+
 import java.util.ArrayList;
 
 public class WordSorter 
@@ -38,7 +41,7 @@ public class WordSorter
 			word = word.replace("?", "");
 			word = word.replace("'", "");
 			word = word.toLowerCase();
-			System.out.println(word);
+			//System.out.println(word);
 				
 			int currLoc = word.charAt(0) - 97;
 			boolean found = false;
@@ -52,6 +55,8 @@ public class WordSorter
 				wordsList[currLoc].add(word);
 		}
 
+		in = new Scanner(System.in);
+
 		boolean start = true;
 		while(start == true){
 			System.out.println("Here are your menu options:");
@@ -64,17 +69,18 @@ public class WordSorter
 
 			System.out.print("What would you like to do? ");
 			int decision = in.nextInt();
+			in.nextLine();
 
 			if(decision == 1){
-				printAllSpecific();
+				printAllSpecific(wordsList);
 			} else if (decision == 2){
-				printAllWords();
+				printAllWords(wordsList);
 			} else if(decision == 3){
-				printSize();
+				//printSize(wordsList);
 			} else if (decision == 4){
-				searchForWord();
+				//searchForWord(wordsList);
 			} else if(decision == 5){
-				searchAndRemoveWord();
+				//searchAndRemoveWord(wordsList);
 			} else{
 				start = false;
 			}
@@ -86,17 +92,35 @@ public class WordSorter
 
 
 	public static void printAllSpecific(ArrayList<String>[]array){
-		
-		
 		Scanner in = new Scanner(System.in);
 
 		System.out.print("What letter list do you want? ");
 		String first = in.nextLine();
+	
 		int currLoc = first.charAt(0) - 97;
-		for(int i = 0; i < array.length; i++){
-			System.out.println(array[currLoc].get(i));
+		if(array[currLoc].size()>0){
+			for(int i = 0; i < array[currLoc].size(); i++){
+				System.out.println(array[currLoc].get(i));
+			}
+		} else {
+			System.out.println("No words in List");
 		}
-		System.out.println(array[currLoc]);
+	}
 
+	public static void printAllWords(ArrayList<String>[]array){
+		for(int i = 0; i < array.length; i++){
+			for(int x = 0; x < array[i].size(); x++){
+				System.out.println(array[i].get(x));
+			}
+		}
+	}
+
+	public static void printSize(ArrayList<String>[]array){
+		int total = 0;
+
+		for(int i = 0; i < array.length; i++){
+			total += array[i].size();
+		}
+		System.out.println(total);
 	}
 }
