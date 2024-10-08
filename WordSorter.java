@@ -1,3 +1,11 @@
+//Shaan Maheshwari, pd. 3, 10/8/24
+//This code will ask the user 6 different options to choose from after taking in the words from a file and organizing them into their respective array lists by alphabetical order
+//The different options are printing the words of a specific letter, printing all the words, getting the total number of words, looking for a specific word, removing a word, and ending the program
+
+
+
+
+
 import java.io.File;
 import java.util.Scanner;
 
@@ -17,18 +25,18 @@ public class WordSorter
 
 		for(int i = 0; i < wordsList.length; i++){
 			wordsList[i] = new ArrayList<String>();
-		}
+		}//end for
 
 
 		try
 		{
 			in = new Scanner(new File("article.txt"));	
-		}
+		}//end try
 		catch(Exception e)
 		{
 			System.out.println("Cannot find file... Exiting Program");
 			return;
-		}	
+		}//end catch	
 		String word = "";
 		while(in.hasNext())			
 		{
@@ -51,13 +59,13 @@ public class WordSorter
 			for(int x = 0; x < wordsList[currLoc].size(); x++){
 				if(word.equals(wordsList[currLoc].get(x))){
 					found = true;
-				}
+				}//end if
 
 
 			}
 			if(found == false)
 				wordsList[currLoc].add(word);
-		}
+		}//end while
 
 
 		in = new Scanner(System.in);
@@ -118,11 +126,15 @@ public class WordSorter
 	public static void printAllWords(ArrayList<String>[]array){
 		int counter = 0;
 
+		char[] letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+
 		for(int i = 0; i < array.length; i++){
-			for(int x = 0; x < array[i].size(); x++){
-				System.out.println(array[i].get(x));
-				counter++;
-			}
+			if(array[i].size() > 0)
+				System.out.println(letters[i]);
+				for(int x = 0; x < array[i].size(); x++){
+					System.out.println(array[i].get(x));
+					counter++;
+				}
 		}
 		if(counter == 0){
 			System.out.println("Empty List");
