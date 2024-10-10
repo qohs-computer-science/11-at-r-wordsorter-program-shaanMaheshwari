@@ -99,9 +99,9 @@ public class WordSorter
 				searchAndRemoveWord(wordsList);
 			} else{
 				start = false;
-			}
-		}
-	}
+			}//end if-else if-else
+		}//end while
+	}//end main
 
 
 	public static void printAllSpecific(ArrayList<String>[]array){
@@ -116,11 +116,11 @@ public class WordSorter
 		if(array[currLoc].size()>0){
 			for(int i = 0; i < array[currLoc].size(); i++){
 				System.out.println(array[currLoc].get(i));
-			}
+			}//end for
 		} else {
 			System.out.println("No words start with this letter");
-		}
-	}
+		}//end if - else
+	}//end method
 
 
 	public static void printAllWords(ArrayList<String>[]array){
@@ -134,12 +134,12 @@ public class WordSorter
 				for(int x = 0; x < array[i].size(); x++){
 					System.out.println(array[i].get(x));
 					counter++;
-				}
+				}//end for
 		}
 		if(counter == 0){
 			System.out.println("Empty List");
-		}
-	}
+		}//end if
+	}//end method
 
 
 	public static void printSize(ArrayList<String>[]array){
@@ -147,15 +147,15 @@ public class WordSorter
 
 		for(int i = 0; i < array.length; i++){
 			total += array[i].size();
-		}
+		}//end for
 		System.out.println(total);
 
 		if(total > 0){
 			System.out.println("There are " + total + " unique words in the article");
 		} else{
 			System.out.println("Empty List");
-		}
-	}
+		}//end if - else
+	}//end method
 
 
 	public static void searchForWord(ArrayList<String>[]array){
@@ -173,14 +173,14 @@ public class WordSorter
 		for(int i = 0; i < array[currLoc].size(); i++){
 			if(userWord.equals(array[currLoc].get(i)))
 				found = true;
-		}
+		}//end for
 
 
 		if(found == true)
 			System.out.println("Word found in the article");
 		else 
 			System.out.println("Word NOT found in the article.");
-	}
+	}//end method
 
 
 	public static void searchAndRemoveWord(ArrayList<String>[]array){
@@ -196,13 +196,14 @@ public class WordSorter
 			if(userWord.equals(array[currLoc].get(i))){
 				array[currLoc].remove(i);
 				found = true;
-			}
-				
-		}
+			}//end if
+		}//end for
+
+
 		if(found == true)
 			System.out.println("Word successfully removed from the list");
 		else 
 			System.out.println("Word NOT found in the article");
 		
-	}
-}
+	}//end method
+}//end class
